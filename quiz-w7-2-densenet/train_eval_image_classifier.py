@@ -30,7 +30,7 @@ def parse_args(check=True):
 
 
 train_cmd = 'python ./train_image_classifier.py  --dataset_name={dataset_name} --dataset_dir={dataset_dir} --model_name={model_name} --checkpoint_exclude_scopes={checkpoint_exclude_scopes} --train_dir={train_dir} --learning_rate={learning_rate} --optimizer={optimizer} --batch_size={batch_size} --max_number_of_steps={max_number_of_steps} --clone_on_cpu={clone_on_cpu}'
-eval_cmd = 'python ./eval_image_classifier.py --dataset_name={dataset_name} --dataset_dir={dataset_dir} --dataset_split_name={dataset_split_name} --model_name={model_name}   --checkpoint_path={checkpoint_path}  --eval_dir={eval_dir} --batch_size={batch_size}  --max_num_batches={max_num_batches} --clone_on_cpu={clone_on_cpu}'
+eval_cmd = 'python ./eval_image_classifier.py --dataset_name={dataset_name} --dataset_dir={dataset_dir} --dataset_split_name={dataset_split_name} --model_name={model_name}   --checkpoint_path={checkpoint_path}  --eval_dir={eval_dir} --batch_size={batch_size}  --max_num_batches={max_num_batches}'
 
 if __name__ == '__main__':
     FLAGS, unparsed = parse_args()
@@ -62,6 +62,6 @@ if __name__ == '__main__':
         p = os.popen(eval_cmd.format(**{'dataset_name': FLAGS.dataset_name, 'dataset_dir': FLAGS.dataset_dir,
                                         'dataset_split_name': 'validation', 'model_name': FLAGS. model_name,
                                         'checkpoint_path': FLAGS.train_dir, 'batch_size': FLAGS.batch_size,
-                                        'eval_dir': FLAGS. eval_dir, 'max_num_batches': FLAGS. max_num_batches,'clone_on_cpu': FLAGS.clone_on_cpu}))
+                                        'eval_dir': FLAGS. eval_dir, 'max_num_batches': FLAGS. max_num_batches}))
         for l in p:
             print(l.strip())
